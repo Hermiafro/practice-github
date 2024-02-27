@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_LISTNER_CONFIGURATION" doc:name="HTTP Listener config" doc:id="52eeb459-a216-4d73-acfa-a112cb11ee73" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="practice-githubFlow" doc:id="fb39ebb6-cd5e-4608-a53e-31ef9d133180" >
+		<http:listener doc:name="Listener" doc:id="4b70458d-daf6-4c00-a888-c1f93e1cbf8b" config-ref="HTTP_LISTNER_CONFIGURATION" path="/gitpractice"/>
+		<ee:transform doc:name="Transform Message" doc:id="cdb8fe37-611d-44fa-87a0-81079577ec94" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json 
+---
+[
+	
+	
+{
+	"firstName" : "Hermon Bulcha",
+	"id" : 1
+}
+,
+
+{
+	"firstName" : "Lensa Bulcha",
+	"id" : 2
+}
+
+,
+
+{
+	"firstName" : "Hirut Homa",
+	"id" : 3
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+] ]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
